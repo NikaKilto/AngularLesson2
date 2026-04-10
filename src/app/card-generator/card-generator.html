@@ -1,0 +1,69 @@
+<section class="col-11 m-auto mt-5">
+  <h1>Card Generator</h1>
+  <br />
+  <hr />
+  <article class="d-flex justify-content-between mt-3">
+    <aside class="left col-md-5">
+      <div class="mb-3">
+        <label class="form-label">Enter Image Url</label>
+        <input
+          [(ngModel)]="cardModel.imageUrl"
+          type="text"
+          class="form-control"
+          placeholder="Enter Here"
+        />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Enter Title</label>
+        <input
+          [(ngModel)]="cardModel.title"
+          type="text"
+          class="form-control"
+          placeholder="Enter Here"
+        />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Enter Description</label>
+        <input
+          [(ngModel)]="cardModel.description"
+          type="text"
+          class="form-control"
+          placeholder="Enter Here"
+        />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Enter card btn link</label>
+        <input
+          [(ngModel)]="cardModel.link"
+          type="text"
+          class="form-control"
+          placeholder="Enter Here"
+        />
+      </div>
+      <div class="mb-3">
+        <button (click)="clearInpsValBtnClick()" class="btn btn-dark col-md-12 d-block">
+          Clear
+        </button>
+        <button (click)="addCardBtnClick()" class="btn btn-dark col-md-12 d-block">Add</button>
+      </div>
+    </aside>
+
+    <aside class="right col-5">
+      <div class="card" *ngIf="cardModelToShow != undefined; else elseBlock">
+        <img class="card-img-top" [src]="cardModelToShow.imageUrl" alt="Card image cap" />
+        <div class="card-body">
+          <h5 class="card-title">{{ cardModelToShow.title }}</h5>
+          <p class="card-text">
+            {{ cardModelToShow.description }}
+          </p>
+          <a [href]="cardModelToShow.link" target="_blank" class="btn btn-primary col-12"
+            >Go TO The Link</a
+          >
+        </div>
+      </div>
+      <ng-template #elseBlock>
+        <p>Card Generation In Progress...</p>
+      </ng-template>
+    </aside>
+  </article>
+</section>
